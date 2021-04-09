@@ -1,0 +1,206 @@
+textarea:focus,
+input:focus {
+  outline: none;
+}
+
+button:focus {
+  outline: 0;
+}
+
+html {
+  background: linear-gradient(
+    90deg,
+    #3b3c5c,
+    #5d486e,
+    #82537a,
+    #a65e7f,
+    #c86d7e,
+    #e38078,
+    #f69870,
+    #ffb56b
+  );
+  /* background-image: url(photos/photo-1615524152519-cce424198a2e.jpeg); */
+  background-size: cover;
+  font-family: Helvetica;
+}
+
+/* variables */
+
+:root {
+  --border-radius: 15px;
+  --backdrop-blur: blur(100px);
+  --btn-transition: 0.7s;
+  --btn-hover-color: rgba(0, 0, 0, 0.12);
+  --btn-radius: 8px;
+}
+
+/* containers */
+
+#container {
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+#calculator {
+  height: 600px;
+  width: 400px;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  background: rgba(0, 0, 0, 0.164);
+  border-radius: var(--border-radius);
+}
+
+/* display */
+
+#display {
+  display: grid;
+  width: 100%;
+  border: 0px solid rgba(98, 87, 255, 0.952);
+  background: rgba(0, 0, 0, 0.445);
+  backdrop-filter: var(--backdrop-blur);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
+  z-index: -1;
+  color: white;
+}
+
+#history {
+  background: rgba(221, 32, 32, 0);
+  text-align: right;
+  margin: 0px 30px 0 30px;
+  color: rgba(255, 255, 255, 0.493);
+  font-size: 12px;
+}
+
+#current {
+  background: rgba(170, 20, 20, 0);
+  text-align: right;
+  font-size: 28px;
+  margin: 0px 30px 0 30px;
+}
+
+/* button layout */
+
+#grid {
+  display: grid;
+  grid-row: 2/-1;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  border-top: 1px solid rgba(0, 0, 0, 0.13);
+  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  background-color: rgba(0, 0, 0, 0.589);
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.24);
+  border: 0px solid rgb(87, 255, 241);
+  backdrop-filter: var(--backdrop-blur);
+}
+
+/* all buttons */
+
+.btn {
+  border: 0px solid rgba(0, 0, 0, 0.062);
+  transition: var(--btn-transition);
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.btn:hover {
+  background-color: var(--btn-hover-color);
+}
+
+/* number buttons */
+
+.numButton {
+  border-radius: var(--btn-radius);
+}
+
+.leftRow {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.rightRow {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.topRow {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+#one {
+  border-bottom-left-radius: 0;
+}
+
+#three {
+  border-bottom-right-radius: 0;
+}
+
+#zero {
+  border-bottom-left-radius: var(--border-radius);
+}
+
+/* operator buttons */
+
+.opButton {
+  background-color: rgba(0, 0, 0, 0.12);
+}
+
+.opButton:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* other buttons */
+
+#equals {
+  grid-column: 4 / -1;
+  grid-row: 2 / -1;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-bottom-right-radius: var(--border-radius);
+}
+
+#equals:hover {
+  background-color: rgba(0, 0, 0, 0.45);
+}
+
+/* customize buttons */
+
+#customize {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.icons {
+  display: block;
+  grid-column: 12/-1;
+  margin: 0 20px 20px 0;
+  border: 1px solid rgba(0, 0, 0, 0.281);
+  transition: var(--btn-transition);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.637);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.329);
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+}
+
+.icons:hover {
+  background-color: rgba(0, 0, 0, 0.568);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.582);
+  margin: 0 20px 25px 0;
+}
