@@ -7,7 +7,7 @@ button:focus {
   outline: 0;
 }
 
-html {
+body {
   background: linear-gradient(
     90deg,
     #3b3c5c,
@@ -19,7 +19,7 @@ html {
     #f69870,
     #ffb56b
   );
-  /* background-image: url(photos/photo-1615524152519-cce424198a2e.jpeg); */
+  /* background-image: url(photos/bg.jpeg); */
   background-size: cover;
   font-family: Helvetica;
 }
@@ -32,6 +32,16 @@ html {
   --btn-transition: 0.7s;
   --btn-hover-color: rgba(0, 0, 0, 0.12);
   --btn-radius: 8px;
+  /*dark theme */
+  --theme-display-text: white;
+  --theme-history-text: rgba(255, 255, 255, 0.493);
+  --theme-btn-color: white;
+  --theme-calculator: rgba(133, 115, 115, 0.164);
+  --theme-display: rgba(0, 0, 0, 0.445);
+  --theme-grid: rgba(0, 0, 0, 0.589);
+  --theme-operation-buttons: rgba(0, 0, 0, 0.12);
+  --theme-equals: rgba(0, 0, 0, 0.3);
+  --theme-equals-hover: rgba(0, 0, 0, 0.45);
 }
 
 /* containers */
@@ -47,6 +57,7 @@ html {
   left: 0;
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
+  z-index: 1;
 }
 
 #calculator {
@@ -56,7 +67,7 @@ html {
   grid-template-rows: repeat(5, 1fr);
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(0, 0, 0, 0.281);
-  background: rgba(0, 0, 0, 0.164);
+  background: var(--theme-calculator);
   border-radius: var(--border-radius);
 }
 
@@ -66,19 +77,18 @@ html {
   display: grid;
   width: 100%;
   border: 0px solid rgba(98, 87, 255, 0.952);
-  background: rgba(0, 0, 0, 0.445);
+  background: var(--theme-display);
   backdrop-filter: var(--backdrop-blur);
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
-  z-index: -1;
-  color: white;
+  color: var(--theme-display-text);
 }
 
 #history {
   background: rgba(221, 32, 32, 0);
   text-align: right;
   margin: 0px 30px 0 30px;
-  color: rgba(255, 255, 255, 0.493);
+  color: var(--theme-history-text);
   font-size: 12px;
 }
 
@@ -94,12 +104,13 @@ html {
 #grid {
   display: grid;
   grid-row: 2/-1;
+  position: relative;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
   border-top: 1px solid rgba(0, 0, 0, 0.13);
   border-bottom-left-radius: var(--border-radius);
   border-bottom-right-radius: var(--border-radius);
-  background-color: rgba(0, 0, 0, 0.589);
+  background-color: var(--theme-grid);
   box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.24);
   border: 0px solid rgb(87, 255, 241);
   backdrop-filter: var(--backdrop-blur);
@@ -110,12 +121,13 @@ html {
 .btn {
   border: 0px solid rgba(0, 0, 0, 0.062);
   transition: var(--btn-transition);
-  color: white;
+  color: var(--theme-btn-color);
   background-color: rgba(0, 0, 0, 0);
+  position: relative;
 }
 
 .btn:hover {
-  background-color: var(--btn-hover-color);
+  background-color: var(--theme-operation-buttons);
 }
 
 /* number buttons */
@@ -154,11 +166,11 @@ html {
 /* operator buttons */
 
 .opButton {
-  background-color: rgba(0, 0, 0, 0.12);
+  background-color: var(--theme-operation-buttons);
 }
 
 .opButton:hover {
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--theme-equals);
 }
 
 /* other buttons */
@@ -166,12 +178,12 @@ html {
 #equals {
   grid-column: 4 / -1;
   grid-row: 2 / -1;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: var(--theme-equals);
   border-bottom-right-radius: var(--border-radius);
 }
 
 #equals:hover {
-  background-color: rgba(0, 0, 0, 0.45);
+  background-color: var(--theme-equals-hover);
 }
 
 /* customize buttons */
@@ -197,10 +209,13 @@ html {
   border-radius: 100%;
   width: 50px;
   height: 50px;
+  z-index: 1;
+  position: relative;
+  top: 0;
 }
 
 .icons:hover {
   background-color: rgba(0, 0, 0, 0.568);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.582);
-  margin: 0 20px 25px 0;
+  top: -5px;
 }
