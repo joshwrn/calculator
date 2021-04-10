@@ -191,10 +191,6 @@ let whichOperator = function () {
     lastOperator = "+";
   } else if (history.innerHTML.includes("-")) {
     lastOperator = "-";
-  } else if (history.innerHTML.includes("*")) {
-    lastOperator = "*";
-  } else if (history.innerHTML.includes("/")) {
-    lastOperator = "/";
   }
 };
 
@@ -205,9 +201,9 @@ let rightOperation = function () {
   } else if (lastOperator == "+") {
     operate("+", add);
   } else if (lastOperator == "*") {
-    operate("*", multiply);
+    multiplyBtn.onclick();
   } else if (lastOperator == "/") {
-    operate("/", divide);
+    divideBtn.onclick();
   }
 };
 
@@ -236,11 +232,7 @@ let operate = function (sym, func) {
   console.log(lastOperator + " last symbol");
   console.log(sym + " current symbol");
   whichOperator();
-  if (
-    !(lastOperator == sym) &&
-    history.innerHTML != "history" &&
-    oldNumber != "not clear"
-  ) {
+  if (!(lastOperator == sym) && history.innerHTML != "history") {
     console.log("works");
     rightOperation();
     history.innerHTML = oldNumber + " " + sym;
@@ -269,6 +261,92 @@ let operate = function (sym, func) {
     currentOperation = "";
     current.innerHTML = "";
     console.log("pressed operation after equal");
+  }
+};
+
+/* operation buttons */
+test = function () {
+  console.log("test");
+  if (
+    whichOperator() == "-" ||
+    whichOperator() == "*" ||
+    whichOperator() == "/"
+  ) {
+    rightOperation();
+    history.innerHTML = oldNumber + " +";
+    console.log("finished original operation");
+  } else if (
+    (whichOperator() == "+" && currentOperation != "") ||
+    (!history.innerHTML == "" &&
+      checkOperators() == true &&
+      !current.innerHTML == "")
+  ) {
+    let result = add(oldNumber, currentOperation);
+    oldNumber = result;
+    currentOperation = "";
+    current.innerHTML = "";
+    history.innerHTML = oldNumber + " +";
+    usedEqual = oldNumber;
+    console.log("used equal or same operator, or first operation");
+  } else if (oldNumber == "not clear") {
+    oldNumber = currentOperation;
+    history.innerHTML = currentOperation + " +";
+    currentOperation = "";
+    current.innerHTML = "";
+    console.log("idk why clear doesnt work");
+  } else if (history.innerHTML == "" && !current.innerHTML == "") {
+    history.innerHTML = currentOperation + " +";
+    currentOperation = "";
+    current.innerHTML = "";
+    console.log("pressed operation after equal");
+  }
+};
+
+ohlol = function () {
+  if (history.innerHTML.includes("-") && !currentOperation == "") {
+    let result = subtract(oldNumber, currentOperation);
+    oldNumber = result;
+    currentOperation = "";
+    current.innerHTML = "";
+    history.innerHTML = oldNumber + " -";
+  } else if (checkOperators() == true) {
+    oldNumber = currentOperation;
+    history.innerHTML = currentOperation + " -";
+    currentOperation = "";
+    current.innerHTML = "";
+    console.log("-");
+  }
+};
+
+abcd = function () {
+  if (history.innerHTML.includes("*") && !currentOperation == "") {
+    let result = multiply(oldNumber, currentOperation);
+    oldNumber = result;
+    currentOperation = "";
+    current.innerHTML = "";
+    history.innerHTML = oldNumber + " *";
+  } else if (checkOperators() == true) {
+    oldNumber = currentOperation;
+    history.innerHTML = currentOperation + " *";
+    currentOperation = "";
+    current.innerHTML = "";
+    console.log("*");
+  }
+};
+
+abc = function () {
+  if (history.innerHTML.includes("/") && !currentOperation == "") {
+    let result = divide(oldNumber, currentOperation);
+    oldNumber = result;
+    currentOperation = "";
+    current.innerHTML = "";
+    history.innerHTML = oldNumber + " /";
+  } else if (checkOperators() == true) {
+    oldNumber = currentOperation;
+    history.innerHTML = currentOperation + " /";
+    currentOperation = "";
+    current.innerHTML = "";
+    console.log("/");
   }
 };
 
