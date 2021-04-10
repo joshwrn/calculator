@@ -68,10 +68,7 @@ wallpaper.onclick = function () {
 
 /* html display elements */
 let history = document.getElementById("history-text");
-document.getElementById("history-text").innerHTML = "New text!";
-
 let current = document.getElementById("current-text");
-let textUpdate = document.createElement("p");
 
 /* update display */
 /* number buttons */
@@ -133,6 +130,7 @@ decimal.onclick = function () {
 
 clear.onclick = function () {
   current.innerHTML = "";
+  history.innerHTML = "history";
   console.log("clear");
 };
 
