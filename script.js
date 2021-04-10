@@ -1,8 +1,10 @@
-/* variable for storing numbers */
+/* variables for storing numbers */
 let currentOperation = "";
-let oldNumber = "0"; //a
+let oldNumber = "not clear"; //a
 let usedEqual = ""; //variable for storing operator info if equal gets used
+let resetAfterEqual = "false";
 let lastOperator = ""; //stores last operator
+let maxLength = 20; //max length of number that can be entered
 
 /* html calc elements */
 let subtractBtn = document.getElementById("subtract");
@@ -82,78 +84,178 @@ let current = document.getElementById("current-text");
 /* update display */
 /* number buttons */
 one.onclick = function () {
-  current.innerHTML += "1";
-  currentOperation += "1";
-  console.log(currentOperation);
-  console.log("1");
+  if (resetAfterEqual == "true") {
+    clear.onclick();
+    resetAfterEqual = "false";
+    current.innerHTML += "1";
+    currentOperation += "1";
+    console.log(currentOperation);
+    console.log("1");
+  } else if (currentOperation.length < maxLength) {
+    current.innerHTML += "1";
+    currentOperation += "1";
+    console.log(currentOperation);
+    console.log("1");
+  }
 };
 
 two.onclick = function () {
-  current.innerHTML += "2";
-  currentOperation += "2";
-  console.log(currentOperation);
-  console.log("2");
+  if (resetAfterEqual == "true") {
+    clear.onclick();
+    resetAfterEqual = "false";
+    current.innerHTML += "2";
+    currentOperation += "2";
+    console.log(currentOperation);
+    console.log("2");
+  } else if (currentOperation.length < maxLength) {
+    current.innerHTML += "2";
+    currentOperation += "2";
+    console.log(currentOperation);
+    console.log("2");
+  }
 };
 
 three.onclick = function () {
-  current.innerHTML += "3";
-  currentOperation += "3";
-  console.log(currentOperation);
-  console.log("3");
+  if (resetAfterEqual == "true") {
+    clear.onclick();
+    resetAfterEqual = "false";
+    current.innerHTML += "3";
+    currentOperation += "3";
+    console.log(currentOperation);
+    console.log("3");
+  } else if (currentOperation.length < maxLength) {
+    current.innerHTML += "3";
+    currentOperation += "3";
+    console.log(currentOperation);
+    console.log("3");
+  }
 };
 
 four.onclick = function () {
-  current.innerHTML += "4";
-  currentOperation += "4";
-  console.log(currentOperation);
-  console.log("4");
+  if (resetAfterEqual == "true") {
+    clear.onclick();
+    resetAfterEqual = "false";
+    current.innerHTML += "4";
+    currentOperation += "4";
+    console.log(currentOperation);
+    console.log("4");
+  } else if (currentOperation.length < maxLength) {
+    current.innerHTML += "4";
+    currentOperation += "4";
+    console.log(currentOperation);
+    console.log("4");
+  }
 };
 
 five.onclick = function () {
-  current.innerHTML += "5";
-  currentOperation += "5";
-  console.log(currentOperation);
-  console.log("5");
+  if (resetAfterEqual == "true") {
+    clear.onclick();
+    resetAfterEqual = "false";
+    current.innerHTML += "5";
+    currentOperation += "5";
+    console.log(currentOperation);
+    console.log("5");
+  } else if (currentOperation.length < maxLength) {
+    current.innerHTML += "5";
+    currentOperation += "5";
+    console.log(currentOperation);
+    console.log("5");
+  }
 };
 
 six.onclick = function () {
-  current.innerHTML += "6";
-  currentOperation += "6";
-  console.log(currentOperation);
-  console.log("6");
+  if (resetAfterEqual == "true") {
+    clear.onclick();
+    resetAfterEqual = "false";
+    current.innerHTML += "6";
+    currentOperation += "6";
+    console.log(currentOperation);
+    console.log("6");
+  } else if (currentOperation.length < maxLength) {
+    current.innerHTML += "6";
+    currentOperation += "6";
+    console.log(currentOperation);
+    console.log("6");
+  }
 };
 
 seven.onclick = function () {
-  current.innerHTML += "7";
-  currentOperation += "7";
-  console.log(currentOperation);
-  console.log("7");
+  console.log(resetAfterEqual);
+  if (resetAfterEqual == "true") {
+    clear.onclick();
+    resetAfterEqual = "false";
+    current.innerHTML += "7";
+    currentOperation += "7";
+    console.log(currentOperation);
+    console.log("7");
+  } else if (currentOperation.length < maxLength) {
+    current.innerHTML += "7";
+    currentOperation += "7";
+    console.log(currentOperation);
+    console.log("7");
+  }
 };
 
 eight.onclick = function () {
-  current.innerHTML += "8";
-  currentOperation += "8";
-  console.log(currentOperation);
-  console.log("8");
+  if (resetAfterEqual == "true") {
+    clear.onclick();
+    resetAfterEqual = "false";
+    current.innerHTML += "8";
+    currentOperation += "8";
+    console.log(currentOperation);
+    console.log("8");
+  } else if (currentOperation.length < maxLength) {
+    current.innerHTML += "8";
+    currentOperation += "8";
+    console.log(currentOperation);
+    console.log("8");
+  }
 };
 
 nine.onclick = function () {
-  current.innerHTML += "9";
-  currentOperation += "9";
-  console.log(currentOperation);
-  console.log("9");
+  if (resetAfterEqual == "true") {
+    clear.onclick();
+    resetAfterEqual = "false";
+    current.innerHTML += "9";
+    currentOperation += "9";
+    console.log(currentOperation);
+    console.log("9");
+  } else if (currentOperation.length < maxLength) {
+    current.innerHTML += "9";
+    currentOperation += "9";
+    console.log(currentOperation);
+    console.log("9");
+  }
 };
 
 zero.onclick = function () {
-  current.innerHTML += "0";
-  currentOperation += "0";
-  console.log(currentOperation);
-  console.log("0");
+  if (resetAfterEqual == "true") {
+    clear.onclick();
+    resetAfterEqual = "false";
+    current.innerHTML += "0";
+    currentOperation += "0";
+    console.log(currentOperation);
+    console.log("0");
+  } else if (currentOperation.length < maxLength) {
+    current.innerHTML += "0";
+    currentOperation += "0";
+    console.log(currentOperation);
+    console.log("0");
+  }
 };
 
 /* other */
 decimal.onclick = function () {
-  if (!current.innerHTML.includes(".")) {
+  if (resetAfterEqual == "true") {
+    clear.onclick();
+    resetAfterEqual = "false";
+    current.innerHTML += ".";
+    currentOperation += ".";
+    console.log(".");
+  } else if (
+    !current.innerHTML.includes(".") &&
+    currentOperation.length < maxLength - 1
+  ) {
     current.innerHTML += ".";
     currentOperation += ".";
     console.log(".");
@@ -168,6 +270,7 @@ clear.onclick = function () {
   usedEqual = "";
   console.log("clear");
   lastOperator = "";
+  resetAfterEqual = "false";
 };
 
 /* check for operators already used */
@@ -212,36 +315,49 @@ let rightOperation = function () {
 };
 
 addBtn.onclick = function () {
+  resetAfterEqual = "false";
   operate("+", add);
   lastOperator = "+";
 };
 
 subtractBtn.onclick = function () {
-  operate("-", subtract);
-  lastOperator = "-";
+  if (
+    (history.innerHTML == "" && current.innerHTML == "") ||
+    (history.innerHTML.includes("+") && current.innerHTML == "") ||
+    (history.innerHTML.includes("*") && current.innerHTML == "") ||
+    (history.innerHTML.includes("/") && current.innerHTML == "") ||
+    (history.innerHTML.includes("-") && current.innerHTML == "")
+  ) {
+    current.innerHTML += "-";
+    currentOperation += "-";
+    console.log(currentOperation);
+    console.log("-");
+  } else {
+    resetAfterEqual = "false";
+    operate("-", subtract);
+    lastOperator = "-";
+  }
 };
 
 multiplyBtn.onclick = function () {
+  resetAfterEqual = "false";
   operate("*", multiply);
   lastOperator = "*";
 };
 
 divideBtn.onclick = function () {
+  resetAfterEqual = "false";
   operate("/", divide);
   lastOperator = "/";
 };
 //infine loop of going to operator
 /* function to perform any operation */
 let operate = function (sym, func) {
-  console.log(lastOperator + " last symbol");
-  console.log(sym + " current symbol");
-  whichOperator();
   if (
     !(lastOperator == sym) &&
     history.innerHTML != "history" &&
     oldNumber != "not clear"
   ) {
-    console.log("works");
     rightOperation();
     history.innerHTML = oldNumber + " " + sym;
     console.log("finished original operation");
@@ -257,13 +373,13 @@ let operate = function (sym, func) {
     current.innerHTML = "";
     history.innerHTML = oldNumber + " " + sym;
     usedEqual = oldNumber;
-    console.log("symm used equal or same operator, or first operation");
+    console.log("used equal or same operator, or first operation");
   } else if (oldNumber == "not clear") {
     oldNumber = currentOperation;
     history.innerHTML = currentOperation + " " + sym;
     currentOperation = "";
     current.innerHTML = "";
-    console.log("idk why clear doesnt work");
+    console.log("force clear");
   } else if (history.innerHTML == "" && !current.innerHTML == "") {
     history.innerHTML = currentOperation + " " + sym;
     currentOperation = "";
@@ -279,21 +395,25 @@ equals.onclick = function () {
     history.innerHTML = "";
     current.innerHTML = usedEqual;
     currentOperation = usedEqual;
+    resetAfterEqual = "true";
   } else if (history.innerHTML.includes("-")) {
     subtractBtn.onclick();
     history.innerHTML = "";
     current.innerHTML = usedEqual;
     currentOperation = usedEqual;
+    resetAfterEqual = "true";
   } else if (history.innerHTML.includes("*")) {
     multiplyBtn.onclick();
     history.innerHTML = "";
     current.innerHTML = usedEqual;
     currentOperation = usedEqual;
+    resetAfterEqual = "true";
   } else if (history.innerHTML.includes("/")) {
     divideBtn.onclick();
     history.innerHTML = "";
     current.innerHTML = usedEqual;
     currentOperation = usedEqual;
+    resetAfterEqual = "true";
   }
 };
 
@@ -301,23 +421,23 @@ equals.onclick = function () {
 function add(a, b) {
   let int1 = parseFloat(a);
   let int2 = parseFloat(b);
-  return parseFloat(int1 + int2);
+  return parseFloat((int1 + int2).toFixed(2));
 }
 
 function subtract(a, b) {
   let int1 = parseFloat(a);
   let int2 = parseFloat(b);
-  return parseFloat(int1 - int2);
+  return parseFloat((int1 - int2).toFixed(2));
 }
 
 function multiply(a, b) {
   let int1 = parseFloat(a);
   let int2 = parseFloat(b);
-  return parseFloat(int1 * int2);
+  return parseFloat((int1 * int2).toFixed(2));
 }
 
 function divide(a, b) {
   let int1 = parseFloat(a);
   let int2 = parseFloat(b);
-  return parseFloat(int1 / int2);
+  return parseFloat((int1 / int2).toFixed(2));
 }

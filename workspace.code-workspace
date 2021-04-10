@@ -1,16 +1,7 @@
 {
   "folders": [
     {
-      "path": "."
-    },
-    {
-      "path": "../etch/etch-a-sketch"
-    },
-    {
-      "path": "../tests"
+      "path": "../calculator"
     }
-  ],
-  "settings": {
-    "liveServer.settings.multiRootWorkspaceName": "Calculator"
-  }
+  ]
 }
