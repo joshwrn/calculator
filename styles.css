@@ -1,3 +1,27 @@
+/* variables */
+:root {
+  --border-radius: 15px;
+  --backdrop-blur: blur(100px);
+  --btn-transition: 0.7s;
+  --btn-hover-color: rgba(0, 0, 0, 0.12);
+  --btn-radius: 8px;
+  /*dark theme */
+  --theme-display-text: white;
+  --theme-history-text: rgba(255, 255, 255, 0.493);
+  --theme-btn-color: white;
+  --theme-calculator: rgba(133, 115, 115, 0.164);
+  --theme-display: rgba(0, 0, 0, 0.445);
+  --theme-grid: rgba(0, 0, 0, 0.589);
+  --theme-operation-buttons: rgba(0, 0, 0, 0.12);
+  --theme-equals: rgba(0, 0, 0, 0.3);
+  --theme-equals-hover: rgba(0, 0, 0, 0.45);
+}
+
+@font-face {
+  src: url();
+  font-family: custom;
+}
+
 p {
   margin: 0;
   padding: 0;
@@ -26,27 +50,7 @@ body {
   );
   /* background-image: url(photos/bg.jpeg); */
   background-size: cover;
-  font-family: Helvetica;
-}
-
-/* variables */
-
-:root {
-  --border-radius: 15px;
-  --backdrop-blur: blur(100px);
-  --btn-transition: 0.7s;
-  --btn-hover-color: rgba(0, 0, 0, 0.12);
-  --btn-radius: 8px;
-  /*dark theme */
-  --theme-display-text: white;
-  --theme-history-text: rgba(255, 255, 255, 0.493);
-  --theme-btn-color: white;
-  --theme-calculator: rgba(133, 115, 115, 0.164);
-  --theme-display: rgba(0, 0, 0, 0.445);
-  --theme-grid: rgba(0, 0, 0, 0.589);
-  --theme-operation-buttons: rgba(0, 0, 0, 0.12);
-  --theme-equals: rgba(0, 0, 0, 0.3);
-  --theme-equals-hover: rgba(0, 0, 0, 0.45);
+  font-family: Helvetica, sans-serif;
 }
 
 /* containers */
@@ -96,11 +100,27 @@ body {
   text-align: right;
   margin: 50px 30px 0 30px;
   color: var(--theme-history-text);
-  font-size: 12px;
+  font-size: 18px;
   position: relative;
 }
 
 #history-text {
+  border: 0px solid blue;
+  padding: 0px;
+  line-height: 0px;
+}
+
+#result {
+  display: grid;
+  background: rgba(221, 32, 32, 0);
+  text-align: right;
+  margin: 10px 30px 0 30px;
+  color: rgba(255, 255, 255, 0.644);
+  font-size: 18px;
+  position: relative;
+}
+
+#result-text {
   border: 0px solid blue;
   padding: 0px;
   line-height: 0px;
@@ -232,6 +252,7 @@ body {
   z-index: 1;
   position: relative;
   top: 0;
+  backdrop-filter: blur(5px);
 }
 
 .icons:hover {

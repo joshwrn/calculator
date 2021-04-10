@@ -24,7 +24,7 @@ let modeToggle = "dark";
 mode.onclick = function () {
   if (modeToggle == "dark") {
     root.style.setProperty("--theme-display-text", "black");
-    root.style.setProperty("--theme-history-text", "black");
+    root.style.setProperty("--theme-history-text", "rgba(0, 0, 0, 0.493)");
     root.style.setProperty("--theme-btn-color", "black");
     root.style.setProperty("--theme-calculator", "rgba(133, 115, 115, 0.164)");
     root.style.setProperty("--theme-display", "rgba(255, 255, 255, 0.445)");
@@ -39,7 +39,10 @@ mode.onclick = function () {
     console.log("light");
   } else {
     root.style.setProperty("--theme-display-text", "white");
-    root.style.setProperty("--theme-history-text", "white");
+    root.style.setProperty(
+      "--theme-history-text",
+      "rgba(255, 255, 255, 0.493)"
+    );
     root.style.setProperty("--theme-btn-color", "white");
     root.style.setProperty("--theme-calculator", "rgba(133, 115, 115, 0.164)");
     root.style.setProperty("--theme-display", "rgba(0, 0, 0, 0.445)");
@@ -74,111 +77,261 @@ let current = document.getElementById("current-text");
 /* number buttons */
 one.onclick = function () {
   current.innerHTML += "1";
+  currentOperation += "1";
+  console.log(currentOperation);
   console.log("1");
 };
 
 two.onclick = function () {
   current.innerHTML += "2";
+  currentOperation += "2";
+  console.log(currentOperation);
   console.log("2");
 };
 
 three.onclick = function () {
   current.innerHTML += "3";
+  currentOperation += "3";
+  console.log(currentOperation);
   console.log("3");
 };
 
 four.onclick = function () {
   current.innerHTML += "4";
+  currentOperation += "4";
+  console.log(currentOperation);
   console.log("4");
 };
 
 five.onclick = function () {
   current.innerHTML += "5";
+  currentOperation += "5";
+  console.log(currentOperation);
   console.log("5");
 };
 
 six.onclick = function () {
   current.innerHTML += "6";
+  currentOperation += "6";
+  console.log(currentOperation);
   console.log("6");
 };
 
 seven.onclick = function () {
   current.innerHTML += "7";
+  currentOperation += "7";
+  console.log(currentOperation);
   console.log("7");
 };
 
 eight.onclick = function () {
   current.innerHTML += "8";
+  currentOperation += "8";
+  console.log(currentOperation);
   console.log("8");
 };
 
 nine.onclick = function () {
   current.innerHTML += "9";
+  currentOperation += "9";
+  console.log(currentOperation);
   console.log("9");
 };
 
 zero.onclick = function () {
   current.innerHTML += "0";
+  currentOperation += "0";
+  console.log(currentOperation);
   console.log("0");
 };
 
 /* other */
 decimal.onclick = function () {
-  current.innerHTML += ".";
-  console.log(".");
+  if (!currentOperation.includes(".")) {
+    current.innerHTML += ".";
+    currentOperation += ".";
+    console.log(currentOperation);
+    console.log(".");
+  }
 };
 
 clear.onclick = function () {
   current.innerHTML = "";
-  history.innerHTML = "history";
+  history.innerHTML = "";
+  currentOperation = "";
+  oldNumber = "";
+  usedEqual = "";
+  result = "";
+  console.log(currentOperation);
   console.log("clear");
+};
+
+/* check for operators already used */
+
+let checkOperators = function () {
+  if (
+    !(whichOperator() == "+") &&
+    !(whichOperator() == "-") &&
+    !(whichOperator() == "*") &&
+    !(whichOperator() == "/")
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+// find which operator is being used
+let whichOperator = function () {
+  return history.innerHTML.charAt(history.innerHTML.length - 1);
+};
+
+//function to auto run right operation on any operation click
+let rightOperation = function () {
+  if (whichOperator() == "-") {
+    addBtn.onclick();
+  } else if (whichOperator() == "+") {
+    subtractBtn.onclick();
+  } else if (whichOperator() == "*") {
+    multiplyBtn.onclick();
+  } else if (whichOperator() == "/") {
+    divideBtn.onclick();
+  }
 };
 
 /* operation buttons */
 addBtn.onclick = function () {
-  current.innerHTML += "+";
-  console.log("+");
+  if (
+    whichOperator() == "-" ||
+    whichOperator() == "*" ||
+    whichOperator() == "/"
+  ) {
+    rightOperation();
+    history.innerHTML = oldNumber + " +";
+  } else if (whichOperator() == "+" && !currentOperation == "") {
+    let result = add(oldNumber, currentOperation);
+    oldNumber = result;
+    currentOperation = "";
+    current.innerHTML = "";
+    history.innerHTML = oldNumber + " +";
+    usedEqual = oldNumber;
+    console.log("1+");
+  } else if (
+    !history.innerHTML == "" &&
+    checkOperators() == true &&
+    !current.innerHTML == ""
+  ) {
+    let result = add(oldNumber, currentOperation);
+    oldNumber = result;
+    currentOperation = "";
+    current.innerHTML = "";
+    history.innerHTML = oldNumber + " +";
+    usedEqual = oldNumber;
+    console.log("2+");
+  } else if (history.innerHTML == "" && !current.innerHTML == "") {
+    history.innerHTML = oldNumber + " +";
+    currentOperation = "";
+    current.innerHTML = "";
+    console.log("3+");
+  }
 };
 
 subtractBtn.onclick = function () {
-  current.innerHTML += "-";
-  console.log("-");
+  if (history.innerHTML.includes("-") && !currentOperation == "") {
+    let result = subtract(oldNumber, currentOperation);
+    oldNumber = result;
+    currentOperation = "";
+    current.innerHTML = "";
+    history.innerHTML = oldNumber + " -";
+  } else if (checkOperators() == true) {
+    oldNumber = currentOperation;
+    history.innerHTML = currentOperation + " -";
+    currentOperation = "";
+    current.innerHTML = "";
+    console.log("-");
+  }
 };
 
 multiplyBtn.onclick = function () {
-  current.innerHTML += "*";
-  console.log("*");
+  if (history.innerHTML.includes("*") && !currentOperation == "") {
+    let result = multiply(oldNumber, currentOperation);
+    oldNumber = result;
+    currentOperation = "";
+    current.innerHTML = "";
+    history.innerHTML = oldNumber + " *";
+  } else if (checkOperators() == true) {
+    oldNumber = currentOperation;
+    history.innerHTML = currentOperation + " *";
+    currentOperation = "";
+    current.innerHTML = "";
+    console.log("*");
+  }
 };
 
 divideBtn.onclick = function () {
-  current.innerHTML += "/";
-  console.log("/");
+  if (history.innerHTML.includes("/") && !currentOperation == "") {
+    let result = divide(oldNumber, currentOperation);
+    oldNumber = result;
+    currentOperation = "";
+    current.innerHTML = "";
+    history.innerHTML = oldNumber + " /";
+  } else if (checkOperators() == true) {
+    oldNumber = currentOperation;
+    history.innerHTML = currentOperation + " /";
+    currentOperation = "";
+    current.innerHTML = "";
+    console.log("/");
+  }
 };
 
 /* equals */
 equals.onclick = function () {
-  current.innerHTML += "=";
-  console.log("=");
+  if (history.innerHTML.includes("+")) {
+    addBtn.onclick();
+    history.innerHTML = "";
+    current.innerHTML = usedEqual;
+  } else if (history.innerHTML.includes("-")) {
+    subtractBtn.onclick();
+  } else if (history.innerHTML.includes("*")) {
+    multiplyBtn.onclick();
+  } else if (history.innerHTML.includes("/")) {
+    divideBtn.onclick();
+  }
 };
 
 /* operations */
 function add(a, b) {
-  return a + b;
+  let int1 = parseFloat(a);
+  let int2 = parseFloat(b);
+  return parseFloat(int1 + int2);
 }
 
 function subtract(a, b) {
-  return a - b;
+  let int1 = parseFloat(a);
+  let int2 = parseFloat(b);
+  return parseFloat(int1 - int2);
 }
 
 function multiply(a, b) {
-  return a * b;
+  let int1 = parseFloat(a);
+  let int2 = parseFloat(b);
+  return parseFloat(int1 * int2);
 }
 
 function divide(a, b) {
-  return a / b;
+  let int1 = parseFloat(a);
+  let int2 = parseFloat(b);
+  return parseFloat(int1 / int2);
 }
 
-function operate(opperation, num1, num2) {}
+function operate(num1, operation, num2) {
+  parseFloat(num1);
+}
+
+/* variable for storing numbers */
+let currentOperation = "";
+let oldNumber = "0"; //a
+let usedEqual = ""; //variable for storing operator info if equal gets used
 
 console.log(add(1, 7));
 console.log(divide(1, 7));
