@@ -332,6 +332,9 @@ subtractBtn.onclick = function () {
     currentOperation += "-";
     console.log(currentOperation);
     console.log("-");
+  } else if (current.innerHTML == "-") {
+    current.innerHTML = "";
+    currentOperation = "";
   } else {
     resetAfterEqual = "false";
     operate("-", subtract);
