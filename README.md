@@ -1,5 +1,7 @@
 # calculator
 
+https://joshwrn.github.io/calculator/
+
 This calculator has a dark mode and light mode, plus a customizable background.
 
 It was designed for chrome so blur effects might not work in other browsers.
