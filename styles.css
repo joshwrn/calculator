@@ -89,6 +89,7 @@ body {
   border: 0px solid rgba(98, 87, 255, 0.952);
   background: var(--theme-display);
   backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: blur(100px);
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
   color: var(--theme-display-text);
@@ -153,6 +154,7 @@ body {
   background-color: var(--theme-grid);
   box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.24);
   border: 0px solid rgb(87, 255, 241);
+  -webkit-backdrop-filter: blur(100px);
   backdrop-filter: var(--backdrop-blur);
 }
 
