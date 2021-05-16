@@ -1,5 +1,4 @@
 //+ variables for storing numbers
-let currentOperation = '';
 let oldNumber = 'not clear'; //a
 let usedEqual = ''; //variable for storing operator info if equal gets used
 let resetAfterEqual = 'false';
@@ -72,10 +71,8 @@ document.addEventListener('click', (e) => {
       clear.onclick();
       resetAfterEqual = 'false';
       current.innerHTML += e.target.innerHTML;
-      currentOperation += e.target.innerHTML;
-    } else if (currentOperation.length < maxLength) {
+    } else if (current.innerHTML.length < maxLength) {
       current.innerHTML += e.target.innerHTML;
-      currentOperation += e.target.innerHTML;
     }
   }
 });
@@ -86,13 +83,11 @@ decimal.onclick = () => {
     clear.onclick();
     resetAfterEqual = 'false';
     current.innerHTML += '.';
-    currentOperation += '.';
   } else if (
     !current.innerHTML.includes('.') &&
-    currentOperation.length < maxLength - 1
+    current.innerHTML.length < maxLength - 1
   ) {
     current.innerHTML += '.';
-    currentOperation += '.';
   }
 };
 
@@ -101,7 +96,7 @@ decimal.onclick = () => {
 clear.onclick = () => {
   current.innerHTML = '';
   history.innerHTML = '';
-  currentOperation = '';
+
   oldNumber = 'not clear';
   usedEqual = '';
   lastOperator = '';
@@ -173,10 +168,8 @@ document.addEventListener('click', (e) => {
         (history.innerHTML.includes('-') && current.innerHTML === '')
       ) {
         current.innerHTML += '-';
-        currentOperation += '-';
       } else if (current.innerHTML === '-') {
         current.innerHTML = '';
-        currentOperation = '';
       } else {
         resetAfterEqual = 'false';
         operate('-', subtract);
@@ -197,27 +190,24 @@ let operate = (sym, func) => {
     history.innerHTML = oldNumber + ' ' + sym;
     console.log('finished original operation');
   } else if (
-    (whichOperator() === sym && currentOperation !== '') ||
+    (whichOperator() === sym && current.innerHTML !== '') ||
     (!history.innerHTML == '' &&
       checkOperators() === true &&
       !current.innerHTML == '')
   ) {
-    let result = func(oldNumber, currentOperation);
+    let result = func(oldNumber, current.innerHTML);
     oldNumber = result;
-    currentOperation = '';
     current.innerHTML = '';
     history.innerHTML = oldNumber + ' ' + sym;
     usedEqual = oldNumber;
     console.log('used equal or same operator, or first operation');
   } else if (oldNumber == 'not clear') {
-    oldNumber = currentOperation;
-    history.innerHTML = currentOperation + ' ' + sym;
-    currentOperation = '';
+    oldNumber = current.innerHTML;
+    history.innerHTML = current.innerHTML + ' ' + sym;
     current.innerHTML = '';
     console.log('force clear');
   } else if (history.innerHTML == '' && !current.innerHTML == '') {
-    history.innerHTML = currentOperation + ' ' + sym;
-    currentOperation = '';
+    history.innerHTML = current.innerHTML + ' ' + sym;
     current.innerHTML = '';
     console.log('pressed operation after equal');
   }
@@ -234,7 +224,6 @@ equals.onclick = () => {
     rightOperation();
     history.innerHTML = '';
     current.innerHTML = usedEqual;
-    currentOperation = usedEqual;
     resetAfterEqual = 'true';
   }
 };
