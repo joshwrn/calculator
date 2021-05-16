@@ -62,7 +62,7 @@ wallpaper.onclick = () => {
 const history = document.getElementById('history-text');
 const current = document.getElementById('current-text');
 
-//@ update display
+//@ update the display
 //! Number buttons
 
 document.addEventListener('click', (e) => {
