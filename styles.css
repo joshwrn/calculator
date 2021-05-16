@@ -2,7 +2,7 @@
 :root {
   --border-radius: 15px;
   --backdrop-blur: blur(100px);
-  --btn-transition: 0.7s;
+  --btn-transition: 0.35s;
   --btn-hover-color: rgba(0, 0, 0, 0.12);
   --btn-radius: 8px;
   /*dark theme */

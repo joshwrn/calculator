@@ -13,6 +13,8 @@ const equals = document.getElementById('equals');
 //+ html icon elements
 const root = document.documentElement;
 const mode = document.getElementById('mode');
+
+//+ dark mode
 let modeToggle = 'dark';
 mode.onclick = () => {
   if (modeToggle === 'dark') {
@@ -46,6 +48,7 @@ mode.onclick = () => {
   }
 };
 
+//+ wallpaper
 const wallpaper = document.getElementById('wallpaper');
 let wallpaperToggle = 'gradient';
 wallpaper.onclick = () => {
@@ -64,7 +67,6 @@ const current = document.getElementById('current-text');
 
 //@ update the display
 //! Number buttons
-
 document.addEventListener('click', (e) => {
   if (e.target.matches('.numButton')) {
     if (resetAfterEqual === 'true') {
@@ -77,7 +79,7 @@ document.addEventListener('click', (e) => {
   }
 });
 
-//? other
+//@ decimal
 decimal.onclick = () => {
   if (resetAfterEqual === 'true') {
     clear.onclick();
@@ -92,7 +94,6 @@ decimal.onclick = () => {
 };
 
 //@ clear button
-
 clear.onclick = () => {
   current.innerHTML = '';
   history.innerHTML = '';
@@ -103,7 +104,6 @@ clear.onclick = () => {
 };
 
 //+ check for operators already used
-
 let checkOperators = () => {
   if (
     !(whichOperator() === '+') &&
@@ -142,7 +142,6 @@ let rightOperation = () => {
 };
 
 //!operation buttons
-
 document.addEventListener('click', (e) => {
   if (e.target.matches('.opButton')) {
     if (
