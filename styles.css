@@ -17,11 +17,6 @@
   --theme-equals-hover: rgba(0, 0, 0, 0.45);
 }
 
-@font-face {
-  src: url();
-  font-family: custom;
-}
-
 p {
   margin: 0;
   padding: 0;
@@ -53,7 +48,7 @@ body {
   font-family: Helvetica, sans-serif;
 }
 
-/* containers */
+/*! containers */
 
 #container {
   display: grid;
@@ -80,13 +75,12 @@ body {
   border-radius: var(--border-radius);
 }
 
-/* display */
+/*! display */
 
 #display {
   display: grid;
   grid-row: 1/3;
   width: 100%;
-  border: 0px solid rgba(98, 87, 255, 0.952);
   background: var(--theme-display);
   backdrop-filter: var(--backdrop-blur);
   -webkit-backdrop-filter: blur(100px);
@@ -97,7 +91,6 @@ body {
 
 #history {
   display: grid;
-  background: rgba(221, 32, 32, 0);
   text-align: right;
   margin: 50px 30px 0 30px;
   color: var(--theme-history-text);
@@ -106,14 +99,12 @@ body {
 }
 
 #history-text {
-  border: 0px solid blue;
   padding: 0px;
   line-height: 0px;
 }
 
 #result {
   display: grid;
-  background: rgba(221, 32, 32, 0);
   text-align: right;
   margin: 10px 30px 0 30px;
   color: rgba(255, 255, 255, 0.644);
@@ -122,25 +113,18 @@ body {
 }
 
 #result-text {
-  border: 0px solid blue;
   padding: 0px;
   line-height: 0px;
 }
 
 #current {
   display: grid;
-  background: rgba(170, 20, 20, 0);
   text-align: right;
   font-size: 28px;
   margin: 0px 30px 0 30px;
-  border: 0px solid red;
 }
 
-#current-text {
-  border: 0px solid blue;
-}
-
-/* button layout */
+/*! button layout */
 
 #grid {
   display: grid;
@@ -153,28 +137,32 @@ body {
   border-bottom-right-radius: var(--border-radius);
   background-color: var(--theme-grid);
   box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.24);
-  border: 0px solid rgb(87, 255, 241);
   -webkit-backdrop-filter: blur(100px);
   backdrop-filter: var(--backdrop-blur);
 }
 
-/* all buttons */
+/*! all buttons */
 
 .btn {
-  border: 0px solid rgba(0, 0, 0, 0.062);
+  border: none;
   transition: var(--btn-transition);
   color: var(--theme-btn-color);
   background-color: rgba(0, 0, 0, 0);
   position: relative;
+  cursor: pointer;
 }
 
 .btn:hover {
   background-color: var(--theme-operation-buttons);
 }
 
-/* number buttons */
+/*! number buttons */
 
 .numButton {
+  border-radius: var(--btn-radius);
+}
+
+.nonNumButton {
   border-radius: var(--btn-radius);
 }
 
@@ -205,7 +193,7 @@ body {
   border-bottom-left-radius: var(--border-radius);
 }
 
-/* operator buttons */
+/*! operator buttons */
 
 .opButton {
   background-color: var(--theme-operation-buttons);
@@ -215,7 +203,7 @@ body {
   background-color: var(--theme-equals);
 }
 
-/* other buttons */
+/*! other buttons */
 
 #equals {
   grid-column: 4 / -1;
@@ -228,7 +216,7 @@ body {
   background-color: var(--theme-equals-hover);
 }
 
-/* customize buttons */
+/*? customize buttons */
 
 #customize {
   display: grid;

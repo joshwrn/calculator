@@ -1,286 +1,127 @@
 /* variables for storing numbers */
-let currentOperation = "";
-let oldNumber = "not clear"; //a
-let usedEqual = ""; //variable for storing operator info if equal gets used
-let resetAfterEqual = "false";
-let lastOperator = ""; //stores last operator
+let currentOperation = '';
+let oldNumber = 'not clear'; //a
+let usedEqual = ''; //variable for storing operator info if equal gets used
+let resetAfterEqual = 'false';
+let lastOperator = ''; //stores last operator
 let maxLength = 20; //max length of number that can be entered
 
 /* html calc elements */
-let subtractBtn = document.getElementById("subtract");
-let addBtn = document.getElementById("add");
-let multiplyBtn = document.getElementById("multiply");
-let divideBtn = document.getElementById("divide");
-let one = document.getElementById("one");
-let two = document.getElementById("two");
-let three = document.getElementById("three");
-let four = document.getElementById("four");
-let five = document.getElementById("five");
-let six = document.getElementById("six");
-let seven = document.getElementById("seven");
-let eight = document.getElementById("eight");
-let nine = document.getElementById("nine");
-let zero = document.getElementById("zero");
-let decimal = document.getElementById("decimal");
-let clear = document.getElementById("clear");
-let equals = document.getElementById("equals");
+const subtractBtn = document.getElementById('subtract');
+const addBtn = document.getElementById('add');
+const multiplyBtn = document.getElementById('multiply');
+const divideBtn = document.getElementById('divide');
+const decimal = document.getElementById('decimal');
+const clear = document.getElementById('clear');
+const equals = document.getElementById('equals');
 
 /* html icon elements */
-let root = document.documentElement;
-let mode = document.getElementById("mode");
-let modeToggle = "dark";
-mode.onclick = function () {
-  if (modeToggle == "dark") {
-    root.style.setProperty("--theme-display-text", "black");
-    root.style.setProperty("--theme-history-text", "rgba(0, 0, 0, 0.493)");
-    root.style.setProperty("--theme-btn-color", "black");
-    root.style.setProperty("--theme-calculator", "rgba(133, 115, 115, 0.164)");
-    root.style.setProperty("--theme-display", "rgba(255, 255, 255, 0.445)");
-    root.style.setProperty("--theme-grid", "rgba(255, 255, 255, 0.589)");
+const root = document.documentElement;
+const mode = document.getElementById('mode');
+let modeToggle = 'dark';
+mode.onclick = () => {
+  if (modeToggle == 'dark') {
+    root.style.setProperty('--theme-display-text', 'black');
+    root.style.setProperty('--theme-history-text', 'rgba(0, 0, 0, 0.493)');
+    root.style.setProperty('--theme-btn-color', 'black');
+    root.style.setProperty('--theme-calculator', 'rgba(133, 115, 115, 0.164)');
+    root.style.setProperty('--theme-display', 'rgba(255, 255, 255, 0.445)');
+    root.style.setProperty('--theme-grid', 'rgba(255, 255, 255, 0.589)');
     root.style.setProperty(
-      "--theme-operation-buttons",
-      "rgba(255, 255, 255, 0.12)"
+      '--theme-operation-buttons',
+      'rgba(255, 255, 255, 0.12)'
     );
-    root.style.setProperty("--theme-equals", "rgba(255, 255, 255, 0.3)");
-    root.style.setProperty("--theme-equals-hover", "rgba(255, 255, 255, 0.45)");
-    modeToggle = "light";
-    console.log("light");
+    root.style.setProperty('--theme-equals', 'rgba(255, 255, 255, 0.3)');
+    root.style.setProperty('--theme-equals-hover', 'rgba(255, 255, 255, 0.45)');
+    modeToggle = 'light';
+    console.log('light');
   } else {
-    root.style.setProperty("--theme-display-text", "white");
+    root.style.setProperty('--theme-display-text', 'white');
     root.style.setProperty(
-      "--theme-history-text",
-      "rgba(255, 255, 255, 0.493)"
+      '--theme-history-text',
+      'rgba(255, 255, 255, 0.493)'
     );
-    root.style.setProperty("--theme-btn-color", "white");
-    root.style.setProperty("--theme-calculator", "rgba(133, 115, 115, 0.164)");
-    root.style.setProperty("--theme-display", "rgba(0, 0, 0, 0.445)");
-    root.style.setProperty("--theme-grid", "rgba(0, 0, 0, 0.589)");
-    root.style.setProperty("--theme-operation-buttons", "rgba(0, 0, 0, 0.12)");
-    root.style.setProperty("--theme-equals", "rgba(0, 0, 0, 0.3)");
-    root.style.setProperty("--theme-equals-hover", "rgba(0, 0, 0, 0.45)");
-    modeToggle = "dark";
-    console.log("dark");
+    root.style.setProperty('--theme-btn-color', 'white');
+    root.style.setProperty('--theme-calculator', 'rgba(133, 115, 115, 0.164)');
+    root.style.setProperty('--theme-display', 'rgba(0, 0, 0, 0.445)');
+    root.style.setProperty('--theme-grid', 'rgba(0, 0, 0, 0.589)');
+    root.style.setProperty('--theme-operation-buttons', 'rgba(0, 0, 0, 0.12)');
+    root.style.setProperty('--theme-equals', 'rgba(0, 0, 0, 0.3)');
+    root.style.setProperty('--theme-equals-hover', 'rgba(0, 0, 0, 0.45)');
+    modeToggle = 'dark';
+    console.log('dark');
   }
 };
 
-let wallpaper = document.getElementById("wallpaper");
-let wallpaperToggle = "gradient";
-wallpaper.onclick = function () {
-  if (wallpaperToggle == "gradient") {
-    document.body.style.backgroundImage = "url(photos/bg.jpeg)";
-    wallpaperToggle = "image";
-    console.log("image");
+const wallpaper = document.getElementById('wallpaper');
+let wallpaperToggle = 'gradient';
+wallpaper.onclick = () => {
+  if (wallpaperToggle === 'gradient') {
+    document.body.style.backgroundImage = 'url(photos/bg.jpeg)';
+    wallpaperToggle = 'image';
+    console.log('image');
   } else {
-    document.body.style.backgroundImage = "";
-    wallpaperToggle = "gradient";
-    console.log("gradient");
+    document.body.style.backgroundImage = '';
+    wallpaperToggle = 'gradient';
+    console.log('gradient');
   }
 };
 
 /* html display elements */
-let history = document.getElementById("history-text");
-let current = document.getElementById("current-text");
+let history = document.getElementById('history-text');
+let current = document.getElementById('current-text');
 
 /* update display */
-/* number buttons */
-one.onclick = function () {
-  if (resetAfterEqual == "true") {
-    clear.onclick();
-    resetAfterEqual = "false";
-    current.innerHTML += "1";
-    currentOperation += "1";
-    console.log(currentOperation);
-    console.log("1");
-  } else if (currentOperation.length < maxLength) {
-    current.innerHTML += "1";
-    currentOperation += "1";
-    console.log(currentOperation);
-    console.log("1");
-  }
-};
+/*+ Number buttons */
 
-two.onclick = function () {
-  if (resetAfterEqual == "true") {
-    clear.onclick();
-    resetAfterEqual = "false";
-    current.innerHTML += "2";
-    currentOperation += "2";
-    console.log(currentOperation);
-    console.log("2");
-  } else if (currentOperation.length < maxLength) {
-    current.innerHTML += "2";
-    currentOperation += "2";
-    console.log(currentOperation);
-    console.log("2");
+document.addEventListener('click', (e) => {
+  if (e.target.matches('.numButton')) {
+    if (resetAfterEqual === 'true') {
+      clear.onclick();
+      resetAfterEqual = 'false';
+      current.innerHTML += e.target.innerHTML;
+      currentOperation += e.target.innerHTML;
+    } else if (currentOperation.length < maxLength) {
+      current.innerHTML += e.target.innerHTML;
+      currentOperation += e.target.innerHTML;
+    }
   }
-};
-
-three.onclick = function () {
-  if (resetAfterEqual == "true") {
-    clear.onclick();
-    resetAfterEqual = "false";
-    current.innerHTML += "3";
-    currentOperation += "3";
-    console.log(currentOperation);
-    console.log("3");
-  } else if (currentOperation.length < maxLength) {
-    current.innerHTML += "3";
-    currentOperation += "3";
-    console.log(currentOperation);
-    console.log("3");
-  }
-};
-
-four.onclick = function () {
-  if (resetAfterEqual == "true") {
-    clear.onclick();
-    resetAfterEqual = "false";
-    current.innerHTML += "4";
-    currentOperation += "4";
-    console.log(currentOperation);
-    console.log("4");
-  } else if (currentOperation.length < maxLength) {
-    current.innerHTML += "4";
-    currentOperation += "4";
-    console.log(currentOperation);
-    console.log("4");
-  }
-};
-
-five.onclick = function () {
-  if (resetAfterEqual == "true") {
-    clear.onclick();
-    resetAfterEqual = "false";
-    current.innerHTML += "5";
-    currentOperation += "5";
-    console.log(currentOperation);
-    console.log("5");
-  } else if (currentOperation.length < maxLength) {
-    current.innerHTML += "5";
-    currentOperation += "5";
-    console.log(currentOperation);
-    console.log("5");
-  }
-};
-
-six.onclick = function () {
-  if (resetAfterEqual == "true") {
-    clear.onclick();
-    resetAfterEqual = "false";
-    current.innerHTML += "6";
-    currentOperation += "6";
-    console.log(currentOperation);
-    console.log("6");
-  } else if (currentOperation.length < maxLength) {
-    current.innerHTML += "6";
-    currentOperation += "6";
-    console.log(currentOperation);
-    console.log("6");
-  }
-};
-
-seven.onclick = function () {
-  console.log(resetAfterEqual);
-  if (resetAfterEqual == "true") {
-    clear.onclick();
-    resetAfterEqual = "false";
-    current.innerHTML += "7";
-    currentOperation += "7";
-    console.log(currentOperation);
-    console.log("7");
-  } else if (currentOperation.length < maxLength) {
-    current.innerHTML += "7";
-    currentOperation += "7";
-    console.log(currentOperation);
-    console.log("7");
-  }
-};
-
-eight.onclick = function () {
-  if (resetAfterEqual == "true") {
-    clear.onclick();
-    resetAfterEqual = "false";
-    current.innerHTML += "8";
-    currentOperation += "8";
-    console.log(currentOperation);
-    console.log("8");
-  } else if (currentOperation.length < maxLength) {
-    current.innerHTML += "8";
-    currentOperation += "8";
-    console.log(currentOperation);
-    console.log("8");
-  }
-};
-
-nine.onclick = function () {
-  if (resetAfterEqual == "true") {
-    clear.onclick();
-    resetAfterEqual = "false";
-    current.innerHTML += "9";
-    currentOperation += "9";
-    console.log(currentOperation);
-    console.log("9");
-  } else if (currentOperation.length < maxLength) {
-    current.innerHTML += "9";
-    currentOperation += "9";
-    console.log(currentOperation);
-    console.log("9");
-  }
-};
-
-zero.onclick = function () {
-  if (resetAfterEqual == "true") {
-    clear.onclick();
-    resetAfterEqual = "false";
-    current.innerHTML += "0";
-    currentOperation += "0";
-    console.log(currentOperation);
-    console.log("0");
-  } else if (currentOperation.length < maxLength) {
-    current.innerHTML += "0";
-    currentOperation += "0";
-    console.log(currentOperation);
-    console.log("0");
-  }
-};
+});
 
 /* other */
-decimal.onclick = function () {
-  if (resetAfterEqual == "true") {
+decimal.onclick = () => {
+  if (resetAfterEqual === 'true') {
     clear.onclick();
-    resetAfterEqual = "false";
-    current.innerHTML += ".";
-    currentOperation += ".";
-    console.log(".");
+    resetAfterEqual = 'false';
+    current.innerHTML += '.';
+    currentOperation += '.';
   } else if (
-    !current.innerHTML.includes(".") &&
+    !current.innerHTML.includes('.') &&
     currentOperation.length < maxLength - 1
   ) {
-    current.innerHTML += ".";
-    currentOperation += ".";
-    console.log(".");
+    current.innerHTML += '.';
+    currentOperation += '.';
   }
 };
 
-clear.onclick = function () {
-  current.innerHTML = "";
-  history.innerHTML = "";
-  currentOperation = "";
-  oldNumber = "not clear";
-  usedEqual = "";
-  console.log("clear");
-  lastOperator = "";
-  resetAfterEqual = "false";
+clear.onclick = () => {
+  current.innerHTML = '';
+  history.innerHTML = '';
+  currentOperation = '';
+  oldNumber = 'not clear';
+  usedEqual = '';
+  lastOperator = '';
+  resetAfterEqual = 'false';
 };
 
 /* check for operators already used */
 
-let checkOperators = function () {
+let checkOperators = () => {
   if (
-    !(whichOperator() == "+") &&
-    !(whichOperator() == "-") &&
-    !(whichOperator() == "*") &&
-    !(whichOperator() == "/")
+    !(whichOperator() === '+') &&
+    !(whichOperator() === '-') &&
+    !(whichOperator() === '*') &&
+    !(whichOperator() === '/')
   ) {
     return true;
   } else {
@@ -289,134 +130,160 @@ let checkOperators = function () {
 };
 
 // find which operator is being used
-let whichOperator = function () {
-  if (history.innerHTML.includes("+")) {
-    lastOperator = "+";
-  } else if (history.innerHTML.includes("-")) {
-    lastOperator = "-";
-  } else if (history.innerHTML.includes("*")) {
-    lastOperator = "*";
-  } else if (history.innerHTML.includes("/")) {
-    lastOperator = "/";
+let whichOperator = () => {
+  if (history.innerHTML.includes('+')) {
+    lastOperator = '+';
+  } else if (history.innerHTML.includes('-')) {
+    lastOperator = '-';
+  } else if (history.innerHTML.includes('*')) {
+    lastOperator = '*';
+  } else if (history.innerHTML.includes('/')) {
+    lastOperator = '/';
   }
 };
 
-//function to auto run right operation on any operation click
-let rightOperation = function () {
-  if (lastOperator == "-") {
-    operate("-", subtract);
-  } else if (lastOperator == "+") {
-    operate("+", add);
-  } else if (lastOperator == "*") {
-    operate("*", multiply);
-  } else if (lastOperator == "/") {
-    operate("/", divide);
+//! function to auto run right operation on any operation click
+let rightOperation = () => {
+  if (lastOperator === '-') {
+    operate('-', subtract);
+  } else if (lastOperator === '+') {
+    operate('+', add);
+  } else if (lastOperator === '*') {
+    operate('*', multiply);
+  } else if (lastOperator === '/') {
+    operate('/', divide);
   }
 };
+
+//!operation buttons
+
+document.addEventListener('click', (e) => {
+  if (e.target.matches('.opButton')) {
+    if (
+      Number.isFinite(Number(current.innerHTML)) &&
+      current.innerHTML !== ''
+    ) {
+      if (
+        e.target.id === 'add' ||
+        e.target.id === 'divide' ||
+        e.target.id === 'multiply'
+      ) {
+        resetAfterEqual = 'false';
+        console.log(e.target.dataset.type);
+        operate(e.target.innerHTML, e.target.innerHTML);
+        lastOperator = e.target.innerHTML;
+      }
+    }
+  }
+});
 
 addBtn.onclick = function () {
-  resetAfterEqual = "false";
-  operate("+", add);
-  lastOperator = "+";
-};
-
-subtractBtn.onclick = function () {
-  if (
-    (history.innerHTML == "" && current.innerHTML == "") ||
-    (history.innerHTML.includes("+") && current.innerHTML == "") ||
-    (history.innerHTML.includes("*") && current.innerHTML == "") ||
-    (history.innerHTML.includes("/") && current.innerHTML == "") ||
-    (history.innerHTML.includes("-") && current.innerHTML == "")
-  ) {
-    current.innerHTML += "-";
-    currentOperation += "-";
-    console.log(currentOperation);
-    console.log("-");
-  } else if (current.innerHTML == "-") {
-    current.innerHTML = "";
-    currentOperation = "";
-  } else {
-    resetAfterEqual = "false";
-    operate("-", subtract);
-    lastOperator = "-";
+  if (Number.isFinite(Number(current.innerHTML)) && current.innerHTML !== '') {
+    resetAfterEqual = 'false';
+    operate('+', add);
+    lastOperator = '+';
   }
 };
 
 multiplyBtn.onclick = function () {
-  resetAfterEqual = "false";
-  operate("*", multiply);
-  lastOperator = "*";
+  if (Number.isFinite(Number(current.innerHTML)) && current.innerHTML !== '') {
+    resetAfterEqual = 'false';
+    operate('*', multiply);
+    lastOperator = '*';
+  }
 };
 
 divideBtn.onclick = function () {
-  resetAfterEqual = "false";
-  operate("/", divide);
-  lastOperator = "/";
+  if (Number.isFinite(Number(current.innerHTML)) && current.innerHTML !== '') {
+    resetAfterEqual = 'false';
+    operate('/', divide);
+    lastOperator = '/';
+  }
 };
-//infine loop of going to operator
+
+subtractBtn.onclick = () => {
+  if (
+    (history.innerHTML === '' && current.innerHTML === '') ||
+    (history.innerHTML.includes('+') && current.innerHTML === '') ||
+    (history.innerHTML.includes('*') && current.innerHTML === '') ||
+    (history.innerHTML.includes('/') && current.innerHTML === '') ||
+    (history.innerHTML.includes('-') && current.innerHTML === '')
+  ) {
+    current.innerHTML += '-';
+    currentOperation += '-';
+  } else if (current.innerHTML === '-') {
+    current.innerHTML = '';
+    currentOperation = '';
+  } else {
+    resetAfterEqual = 'false';
+    operate('-', subtract);
+    lastOperator = '-';
+  }
+};
+
 /* function to perform any operation */
 let operate = function (sym, func) {
   if (
     !(lastOperator == sym) &&
-    history.innerHTML != "history" &&
-    oldNumber != "not clear"
+    history.innerHTML != 'history' &&
+    oldNumber != 'not clear'
   ) {
     rightOperation();
-    history.innerHTML = oldNumber + " " + sym;
-    console.log("finished original operation");
+    history.innerHTML = oldNumber + ' ' + sym;
+    console.log('finished original operation');
   } else if (
-    (whichOperator() == sym && currentOperation != "") ||
-    (!history.innerHTML == "" &&
+    (whichOperator() == sym && currentOperation != '') ||
+    (!history.innerHTML == '' &&
       checkOperators() == true &&
-      !current.innerHTML == "")
+      !current.innerHTML == '')
   ) {
     let result = func(oldNumber, currentOperation);
     oldNumber = result;
-    currentOperation = "";
-    current.innerHTML = "";
-    history.innerHTML = oldNumber + " " + sym;
+    currentOperation = '';
+    current.innerHTML = '';
+    history.innerHTML = oldNumber + ' ' + sym;
     usedEqual = oldNumber;
-    console.log("used equal or same operator, or first operation");
-  } else if (oldNumber == "not clear") {
+    console.log('used equal or same operator, or first operation');
+  } else if (oldNumber == 'not clear') {
     oldNumber = currentOperation;
-    history.innerHTML = currentOperation + " " + sym;
-    currentOperation = "";
-    current.innerHTML = "";
-    console.log("force clear");
-  } else if (history.innerHTML == "" && !current.innerHTML == "") {
-    history.innerHTML = currentOperation + " " + sym;
-    currentOperation = "";
-    current.innerHTML = "";
-    console.log("pressed operation after equal");
+    history.innerHTML = currentOperation + ' ' + sym;
+    currentOperation = '';
+    current.innerHTML = '';
+    console.log('force clear');
+  } else if (history.innerHTML == '' && !current.innerHTML == '') {
+    history.innerHTML = currentOperation + ' ' + sym;
+    currentOperation = '';
+    current.innerHTML = '';
+    console.log('pressed operation after equal');
   }
 };
 
 /* equals */
 equals.onclick = function () {
-  if (history.innerHTML.includes("+")) {
+  if (history.innerHTML.includes('+')) {
     addBtn.onclick();
-    history.innerHTML = "";
+    history.innerHTML = '';
     current.innerHTML = usedEqual;
     currentOperation = usedEqual;
-    resetAfterEqual = "true";
-  } else if (history.innerHTML.includes("-")) {
+    resetAfterEqual = 'true';
+  } else if (history.innerHTML.includes('-')) {
     subtractBtn.onclick();
-    history.innerHTML = "";
+    history.innerHTML = '';
     current.innerHTML = usedEqual;
     currentOperation = usedEqual;
-    resetAfterEqual = "true";
-  } else if (history.innerHTML.includes("*")) {
+    resetAfterEqual = 'true';
+  } else if (history.innerHTML.includes('*')) {
     multiplyBtn.onclick();
-    history.innerHTML = "";
+    history.innerHTML = '';
     current.innerHTML = usedEqual;
     currentOperation = usedEqual;
-    resetAfterEqual = "true";
-  } else if (history.innerHTML.includes("/")) {
+    resetAfterEqual = 'true';
+  } else if (history.innerHTML.includes('/')) {
     divideBtn.onclick();
-    history.innerHTML = "";
+    history.innerHTML = '';
     current.innerHTML = usedEqual;
     currentOperation = usedEqual;
-    resetAfterEqual = "true";
+    resetAfterEqual = 'true';
   }
 };
 
