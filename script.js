@@ -96,7 +96,6 @@ decimal.onclick = () => {
 clear.onclick = () => {
   current.innerHTML = '';
   history.innerHTML = '';
-
   oldNumber = 'not clear';
   usedEqual = '';
   lastOperator = '';
