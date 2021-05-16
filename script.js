@@ -91,7 +91,7 @@ decimal.onclick = () => {
   }
 };
 
-//@ clear
+//@ clear button
 
 clear.onclick = () => {
   current.innerHTML = '';

@@ -75,6 +75,13 @@ body {
   border-radius: var(--border-radius);
 }
 
+@media only screen and (max-width: 900px) {
+  #calculator {
+    width: 90vw;
+    height: 80vh;
+  }
+}
+
 /*! display */
 
 #display {
